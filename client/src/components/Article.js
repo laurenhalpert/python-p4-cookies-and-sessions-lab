@@ -16,7 +16,13 @@ function Article() {
 
   useEffect(() => {
     setState(initialState);
-    fetch(`/articles/${id}`).then((r) => {
+    fetch(`http://localhost:5555/articles/${id}`, {
+      mode: 'cors',
+      headers: {
+        'Access-Control-Allow-Origin': 'http://localhost:4000'
+      }
+    }).then((r) => {
+      console.log('inside of if')
       if (r.ok) {
         r.json().then((article) =>
           setState({ article, error: null, status: "resolved" })

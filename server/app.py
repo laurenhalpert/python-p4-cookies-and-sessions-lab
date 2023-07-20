@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 
 from flask import Flask, make_response, jsonify, session
+from flask_cors import CORS
 from flask_migrate import Migrate
 
 from models import db, Article, User
 
 app = Flask(__name__)
+CORS(app)
 app.secret_key = b'Y\xf1Xz\x00\xad|eQ\x80t \xca\x1a\x10K'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
